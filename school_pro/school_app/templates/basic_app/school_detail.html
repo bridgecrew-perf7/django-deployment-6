@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+
+        <div class="container">
+
+            <ul class="nav navbar-nav">
+
+                <li><a class="navbar-Admin" href="{% url 'admin:index' %}">ADMIN</a></li>
+                <li><a class="navbar-link" href="{% url 'basic_app:list' %}">Schools</a></li>
+
+                <li><a href="{% url 'basic_app:update' pk=school_detail.pk %}">Update School</a></li>
+                <li><a href="{% url 'basic_app:stu_update' pk=school_detail.pk %}">Update Students</a></li>
+
+                
+                {% if user.is_authenticated %}
+                
+                
+                {% else %}
+                <li><a class="navbar-link" href="{% url 'basic_app:user_login' %}">LogIn</a></li>
+                {% endif %}
+            
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+
+                <li><a class="navbar-link" href="{% url 'basic_app:user_logout' %}">LogOut</a></li>
+
+                <li><a href="{% url 'basic_app:user_logout' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" id="logo">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg></a></li>
+                  
+
+            </ul>
+           
+
+        </div>
+
+    </nav>
+
+
+<div class="container">
+
+    <div class="jumbotron">
+
+        <h1>Here is the Details of the {{ school_detail.name }} </h1><br>
+    <h2><b>School Details :</b></h2>
+    <p>Name : {{ school_detail.name }}</p>
+    <p>Location : {{ school_detail.location }}</p>
+    <p>Principle : {{ school_detail.principle }}</p>
+    <p>Main Branch : {{ school_detail.main_branch }}</p>
+    
+    <h2><b>Number of Students in each class </b>:</h2>
+    {% for count in school_detail.students.all %}
+    <p>Tenth Class : {{ count.tenth }}</p>
+    <p>Ninth Class : {{ count.ninth }}</p>
+    <p>Eighth Class : {{ count.eighth }}</p>
+    <p>Seventh Class : {{ count.seventh }}</p>
+    <p>Sixth Class : {{ count.sixth }}</p>
+    
+    {% endfor %} <br>
+    
+
+
+    <h3><b>If you want Delete your School :</b></h3><p></p>
+    <a class="btn btn-danger" href="{% url 'basic_app:delete' %}">Delete School </a>  <p></p>
+    
+    <form action="{% url 'basic_app:list' %}" method="get">
+        <input type="submit" value="Back" class="btn btn-primary">
+    </form><br>
+    
+    
+    
+    </div>
+    <h3><b>If you want Add Students Count :</b></h3>
+    <a class="btn btn-primary" href="{% url 'basic_app:stu_cre' %}">Add Here </a>  <p></p><br>
+    
+    <h3><b>If you want Update School Details :</b></h3>
+    <a class="btn btn-success" class="btn btn-warning" href="{% url 'basic_app:update' pk=school_detail.pk %}">Update Here </a><br>
+
+    <h3><b>If you want Update Student Count :</b></h3>
+    <a class="btn btn-success" href="{% url 'basic_app:stu_update' pk=school_detail.pk %}">Update Here</a>
+    <br>
+</div>
+</body>
+</html>

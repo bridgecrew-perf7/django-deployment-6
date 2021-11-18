@@ -1,0 +1,32 @@
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+
+<div class="jumbotron">
+
+    <h1>You have entered Wrong Details </h1>
+    <p></p>
+
+    
+
+    <h4><b>Login Again:</b></h4>
+
+<form action="{% url 'basic_app:user_login' %}" method="get">
+    <input type="submit" value="LogIn Again" class="btn btn-primary" id="login">
+</form>
+<p></p>
+
+<h4><b>Create New Account :</b></h4>
+
+<form action="{% url 'basic_app:user_register' %}" method="get">
+    <input type="submit" value="Register" class="btn btn-primary" >
+</form>
+<p></p>
+
+<h4><b>Exit :</b></h4>
+<form action="{% url 'index' %}" method="get">
+    <input type="submit" value="Exit" class="btn btn-danger" >
+</form>
+
+</div>
+
+{% endblock %}

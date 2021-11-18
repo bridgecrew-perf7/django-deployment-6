@@ -1,0 +1,27 @@
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+<div class="jumbotron">
+
+    <h1>Please Login with ur Account Details:</h1><br>
+<form action="{% url 'basic_app:user_login' %}" method="POST">
+    {% csrf_token %}
+    <label for="username">Username :</label>
+    <input type="text" name="username" id="user" placeholder="enter ur username" ><br>
+
+    <label for="password">Password :</label>
+    <input type="password" name="password" id="pswd"><br><p></p>
+
+    <input type="submit" value="Login" class="btn btn-primary">
+</form><p></p>
+
+<form action="{% url 'index' %}" method="get">
+    <input type="submit" value="Back" class="btn btn-danger">
+</form>
+
+</div>
+
+{% endblock %}

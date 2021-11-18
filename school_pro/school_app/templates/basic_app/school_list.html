@@ -1,0 +1,24 @@
+{% extends 'basic_app/basic_app_base.html' %}
+{% block body_block %}
+
+<div class="jumbotron">
+
+    <h1>Here is the List of Schools in Anakapalli :</h1><br>
+<h2><b>Click on School to view more details :</b></h2>
+
+<ol>
+    {% for school in schools%}
+    <h2><li><a href="{{ school.id }}">{{ school.name }}</a></li></h2>
+    {% endfor %}
+</ol>
+<p></p>
+<br>
+<h3><b>If you want Add your School :</b></h3><p></p>
+<a class="btn btn-primary" href="{% url 'basic_app:create' %}">Add School </a>  <p></p>
+
+<h3><b>If you want Delete your School :</b></h3><p></p>
+<a class="btn btn-danger" href="{% url 'basic_app:delete' %}">Delete School </a>  <p></p>
+
+</div>
+
+{% endblock %}

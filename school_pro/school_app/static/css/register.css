@@ -1,0 +1,24 @@
+#id_username{
+    margin-left: 65px;
+    margin-top: 20px;
+    background-color: whitesmoke;
+}
+#id_password{
+    margin-left: 65px;
+    color: red;
+    background-color: whitesmoke;
+}
+
+#id_email{
+    margin-left: 23px;
+    background-color: whitesmoke;
+
+}
+.helptext{
+    font-size: 0px;
+}
+#id_school_website{
+    margin-left: 10px;
+    background-color: whitesmoke;
+
+}

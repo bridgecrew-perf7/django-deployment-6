@@ -1,0 +1,33 @@
+
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<div class="jumbotron">
+
+    <h1>Welcome to the Details of the Schools in Anakapalli</h1><p></p>
+    <p>Schools are organized spaces purposed for teaching and learning. The classrooms, where teachers teach and students learn, are of central importance. Classrooms may be specialized for certain subjects, such as laboratory classrooms for science education and workshops for industrial arts education</p>
+<p></p>
+    <br>
+    <h2><b>To know more about schools!</b></h2>
+<h3>Please Login with your Account Details or Create New Account :</h3><br>
+<h4><b>Login :</b></h4>
+
+<form action="{% url 'basic_app:user_login' %}" method="get">
+    <input type="submit" value="LogIn" class="btn btn-primary" id="login">
+</form>
+<br>
+<h4><b>Create New Account :</b></h4>
+
+<form action="{% url 'basic_app:user_register' %}" method="get">
+    <input type="submit" value="Register" class="btn btn-primary" >
+</form>
+
+
+
+</div>
+
+
+
+{% endblock %}

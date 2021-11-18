@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    
+    <nav class="navbar navbar-default navbar-static-top navbar-inverse">
+
+        <div class="container">
+
+            <ul class="nav navbar-nav">
+
+                <li><a class="navbar-brand" href="{% url 'index' %}">HOME</a></li>
+               
+                <li><a class="navbar-link" href="{% url 'basic_app:user_register' %}">Register</a></li>
+                {% if user.is_authenticated %}
+                <li><a class="navbar-link" href="{% url 'basic_app:user_logout' %}">LogOut</a></li>
+                {% else %}
+                <li><a class="navbar-link" href="{% url 'basic_app:user_login' %}">LogIn</a></li>
+                {% endif %}
+            
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a class="navbar-link" href="{% url 'basic_app:contact' %}">Conatct Us</a></li>
+
+
+                <li><a href="{% url 'basic_app:user_login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" id="logo">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                  </svg></a></li>
+
+            </ul>
+           
+
+        </div>
+
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron">
+
+            <h2>Our School Website gives you the information about best schools in Anakapalli.</h2><p> Find what you are Looking for in 1 Minute or Less! Unlimited Access. 100% Secure. Always Facts. Privacy Friendly. The Best Resources. Results & Answers. Services: Best Results, Explore Now, New Sources, Best in Search.</p><br>
+
+
+            <form action="{% url 'index' %}" method="get">
+                <input type="submit" value="Back" class="btn btn-primary">
+            </form><br>
+            
+        </div>
+    </div>

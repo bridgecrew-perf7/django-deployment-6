@@ -1,0 +1,23 @@
+{% extends 'basic_app/basic_app_base.html' %}
+{% block body_block %}
+
+<div class="jumbotron">
+
+<h1>Your are not Allowed to Delete the School !</h1>
+<h2><b>Only a SuperUser can have the access to Delete </b></h2><br>
+<h3>If you are a SuperUser pls click below to login as a SuperUser</h3>
+
+<form action="{% url 'admin:index' %}" method="get">
+    <input type="submit" value="SuperUser" class="btn btn-success">
+</form><br>
+
+<h3>Not a SuperUser! Please go back to List Page</h3>
+<form action="{% url 'basic_app:list' %}" method="get">
+    <input type="submit" value="back" class="btn btn-danger">
+</form>
+
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'first_app/base.html' %}
+{% block body_block %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+<div class="jumbotron">
+
+    <h1>Welcome to Register Page!<h1>
+        {% if registered %}
+            <h2>Thanks For Registering !</h2>
+            <h3><b>Please LogIn to Continue:</b></h3>
+    
+            <form action="{% url 'basic_app:user_login' %}" method="get">
+                <input class="btn btn-primary" type="submit" value="LogIn">
+            </form><br>
+        
+        {% else %}
+            <h2 ><b>Please Fill the Following :</b></h2>
+        <form method="POST" enctype="multipart/form-data">
+    
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+    
+            <br><input class="btn btn-primary" type="submit" value="Register">
+    
+        </form><br>
+    
+        {% endif %}
+
+        <form action="{% url 'index' %}" method="get">
+            <input type="submit" value="Back" class="btn btn-danger">
+        </form>
+
+</div>
+
+{% endblock %}
